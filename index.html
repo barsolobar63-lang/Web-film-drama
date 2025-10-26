@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LA4YOU - Film Drama</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #1a1a2e;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .loading {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1a1a2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .loading span {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: #9d4edd;
+    }
+
+    .loader {
+      border: 6px solid #ddd;
+      border-top: 6px solid #9d4edd;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      background-color: #240046;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      color: #9d4edd;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #9d4edd;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .film-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .film-item {
+      background-color: #2b2d42;
+      border-radius: 10px;
+      padding: 10px;
+      width: 180px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .film-item:hover {
+      transform: scale(1.05);
+      background-color: #3c096c;
+    }
+
+    .film-item img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .film-item p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #240046;
+      color: #9d4edd;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">
+    <div class="loader"></div>
+    <span>Memuat Film...</span>
+  </div>
+
+  <header>
+    <h1>🎥 LA4YOU Drama</h1>
+  </header>
+
+  <div class="container">
+    <div class="video-frame" id="video">
+      <!-- Ganti link di bawah ini dengan link video kamu -->
+      <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" allowfullscreen></iframe>
+    </div>
+
+    <div class="film-list">
+      <div class="film-item" onclick="gantiFilm('https://www.youtube.com/embed/JGwWNGJdvx8')">
+        <img src="https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg" alt="Drama 1">
+        <p>Drama Cinta 1</p>
+      </div>
+
+      <div class="film-item" onclick="gantiFilm('https://www.youtube.com/embed/3AtDnEC4zak')">
+        <img src="https://i.ytimg.com/vi/3AtDnEC4zak/hqdefault.jpg" alt="Drama 2">
+        <p>Drama Cinta 2</p>
+      </div>
+
+      <div class="film-item" onclick="gantiFilm('https://www.youtube.com/embed/OPf0YbXqDm0')">
+        <img src="https://i.ytimg.com/vi/OPf0YbXqDm0/hqdefault.jpg" alt="Drama 3">
+        <p>Drama Cinta 3</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 LA4YOU FILM | Web Drama Elegan 💜</p>
+  </footer>
+
+  <script>
+    const loading = document.getElementById('loading');
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loading.style.display = 'none';
+      }, 2000);
+    });
+
+    function gantiFilm(link) {
+      document.getElementById('video').innerHTML = `<iframe src="${link}" allowfullscreen></iframe>`;
+    }
+  </script>
+</body>
+</html>
